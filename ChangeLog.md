@@ -1,3 +1,53 @@
+## Changes between ifm3d 0.11.2 and 0.12.0
+
+* Fixes to build infrastructure in support of windows unit tests
+* Added support to retrieve the inverse intrinsic parameters from O3D3xx
+  cameras
+
+## Changes between ifm3d 0.11.1 and 0.11.2
+
+* Bugfix for #111, moved a log message in framegrabber to IFM3D_PROTO_DEBUG to
+  keep noise level low when running an O3X for extended periods of time.
+* Changed flagging bad pixels to always be `0` regardless of data type. Users
+  could always consult the confidence image themselves and discriminate between
+  a true `0` (not possible) and a bad pixel which they could then transform to
+  `nan` or whatever other sentinel makes sense for their application.
+
+## Changes between ifm3d 0.11.0 and 0.11.1
+
+* Bugfix for #103 ``header is not in the correct format`` when ``make check`` is
+  executed against FW 1.6.2114
+* Bugifx for #107 Allows OpenCV module headers to be included in more than one
+  translation unit thus avoiding violation of ODR.
+* The `image` and `opencv` modules now flags bad pixels at the driver-level
+
+## Changes between ifm3d 0.10.0 and 0.11.0
+
+* Added a `jitter` subcommand to ifm3d
+* Added support to retrieve the intrinsic parameters from O3D3xx cameras
+
+## Changes between ifm3d 0.9.3 and 0.10.0
+
+* Adds support for setting the `IFM3D_SESSION_ID` environment variable for
+  establishing edit sessions with the camera using a known ID.
+* Sessions are now explicitly cancellable if the session ID is known.
+* Some session management optimizations in `FromJSON` which should result in
+  incremental speedups in importing JSON configurations to the camera.
+
+
+## Changes between ifm3d 0.9.2 and 0.9.3
+
+* Added build instructions how to switch between Release and Debug
+  for Windows builds
+* Added Troubleshoot guide
+* Added Opencv module build instruction for windows
+* Added minimum MSVC version requirement
+* Added prerequisite packages list for building ifm3d
+* Changed warning message in framegrabber from `WARNING` to `IFM3D_TRACE`
+  severity level
+* Updated swupdate command with --check (recovery mode check) and -r (reboot to
+  productive mode)
+
 ## Changes between ifm3d 0.9.1 and 0.9.2
 
 * Added Support for the Ubuntu 18.04
